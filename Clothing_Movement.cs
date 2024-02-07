@@ -5,6 +5,8 @@ using UnityEngine;
 public class Clothing_Movement : MonoBehaviour
 {
     public GameObject[] spawnObjects;
+    public int min = 1;
+    public int max = 5;
 
     void Start()
     {
@@ -14,7 +16,7 @@ public class Clothing_Movement : MonoBehaviour
     IEnumerator StartGame()
     {
         print(Time.time);
-        yield return new WaitForSeconds(Random.Range(3,7));
+        yield return new WaitForSeconds(Random.Range(min,max));
         SpawnClothing();
     }
 
