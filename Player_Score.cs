@@ -36,6 +36,10 @@ public class Player_Score : MonoBehaviour
     private Text score2;
     private Text score3;
 
+    private Text timerText;
+
+    public static int timerCount;
+
     void Start()
     {
         cloudsScore = 0;
@@ -59,6 +63,8 @@ public class Player_Score : MonoBehaviour
         shoes3Score = 0;
         accessory3Score = 0;
 
+        timerCount = 200;
+
         score1 = GameObject.Find("Score1").GetComponent<Text>();
         score1.text = cloudsScore + "/5";
 
@@ -67,6 +73,11 @@ public class Player_Score : MonoBehaviour
 
         score3 = GameObject.Find("Score3").GetComponent<Text>();
         score3.text = bubblesScore + "/5";
+
+        timerText = GameObject.Find("TimerText").GetComponent<Text>();
+        timerText.text = timerCount + " seconds";
+
+        StartCoroutine(TimerCountdown());
     }
 
     void Update()
@@ -79,6 +90,14 @@ public class Player_Score : MonoBehaviour
 
         score3.text = bubblesScore + "/5";
         bubblesScore = hair3Score + top3Score + bottom3Score + shoes3Score + accessory3Score;
+
+        timerText.text = timerCount + " seconds";
+        
+        if(timerCount <= 0)
+        {
+            timerText.text = "0 seconds";
+            Application.Quit();
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -205,5 +224,19 @@ public class Player_Score : MonoBehaviour
                 accessory1Score = 0;
                 accessory2Score = 0;
             }
+    }
+
+// Timer
+    IEnumerator TimerCountdown()
+    {
+        print(Time.time);
+        yield return new WaitForSeconds(1);
+        timerCount = timerCount - 1;
+        Wait();
+    }
+
+    public void Wait()
+    {
+        StartCoroutine (TimerCountdown());
     }
 }

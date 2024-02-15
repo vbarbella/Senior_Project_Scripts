@@ -5,8 +5,8 @@ using UnityEngine;
 public class Clothing_Movement : MonoBehaviour
 {
     public GameObject[] spawnObjects;
-    public int min = 1;
-    public int max = 5;
+    public static float min = 1;
+    public static float max = 5;
 
     void Start()
     {
