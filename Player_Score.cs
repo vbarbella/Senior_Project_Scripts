@@ -40,8 +40,12 @@ public class Player_Score : MonoBehaviour
 
     public static int timerCount;
 
+    public GameObject spawner;
+
     void Start()
     {
+        spawner.SetActive(true);
+        
         cloudsScore = 0;
         hair1Score = 0;
         top1Score = 0;
@@ -63,7 +67,7 @@ public class Player_Score : MonoBehaviour
         shoes3Score = 0;
         accessory3Score = 0;
 
-        timerCount = 200;
+        timerCount = 100;
 
         score1 = GameObject.Find("Score1").GetComponent<Text>();
         score1.text = cloudsScore + "/5";
@@ -95,6 +99,7 @@ public class Player_Score : MonoBehaviour
         
         if(timerCount <= 0)
         {
+            spawner.SetActive(false);
             timerText.text = "0 seconds";
             Application.Quit();
         }
