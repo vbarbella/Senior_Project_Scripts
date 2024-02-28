@@ -32,15 +32,29 @@ public class Player_Score : MonoBehaviour
     public static int shoes3Score;
     public static int accessory3Score;
 
-    private Text score1;
-    private Text score2;
-    private Text score3;
-
     private Text timerText;
 
     public static int timerCount;
 
     public GameObject spawner;
+
+    public GameObject topBar1;
+    public GameObject topBar2;
+    public GameObject topBar3;
+    public GameObject topBar4;
+    public GameObject topBar5;
+
+    public GameObject cloudsIcon;
+    public GameObject starsIcon;
+    public GameObject bubblesIcon;
+
+    public GameObject starBubble;
+    public GameObject bubbleCloud;
+    public GameObject cloudStar;
+
+    public GameObject timerCircle;
+    public GameObject timerCircle2;
+
 
     void Start()
     {
@@ -68,15 +82,22 @@ public class Player_Score : MonoBehaviour
         accessory3Score = 0;
 
         timerCount = 100;
+        timerCircle.SetActive(true);
+        timerCircle2.SetActive(false);
 
-        score1 = GameObject.Find("Score1").GetComponent<Text>();
-        score1.text = cloudsScore + "/5";
+        topBar1.SetActive(false);
+        topBar2.SetActive(false);
+        topBar3.SetActive(false);
+        topBar4.SetActive(false);
+        topBar5.SetActive(false);
 
-        score2 = GameObject.Find("Score2").GetComponent<Text>();
-        score2.text = starsScore + "/5";
+        cloudsIcon.SetActive(false);
+        starsIcon.SetActive(false);
+        bubblesIcon.SetActive(false);
 
-        score3 = GameObject.Find("Score3").GetComponent<Text>();
-        score3.text = bubblesScore + "/5";
+        starBubble.SetActive(false);
+        cloudStar.SetActive(false);
+        bubbleCloud.SetActive(false);
 
         timerText = GameObject.Find("TimerText").GetComponent<Text>();
         timerText.text = timerCount + " seconds";
@@ -86,22 +107,334 @@ public class Player_Score : MonoBehaviour
 
     void Update()
     {
-        score1.text = cloudsScore + "/5";
         cloudsScore = hair1Score + top1Score + bottom1Score + shoes1Score + accessory1Score;
 
-        score2.text = starsScore + "/5";
         starsScore = hair2Score + top2Score + bottom2Score + shoes2Score + accessory2Score;
 
-        score3.text = bubblesScore + "/5";
         bubblesScore = hair3Score + top3Score + bottom3Score + shoes3Score + accessory3Score;
 
-        timerText.text = timerCount + " seconds";
+        timerText.text = timerCount + "";
         
         if(timerCount <= 0)
         {
             spawner.SetActive(false);
-            timerText.text = "0 seconds";
+            timerText.text = "0";
             Application.Quit();
+        }
+
+        if(timerCount <= 30)
+        {
+            timerCircle.SetActive(false);
+            timerCircle2.SetActive(true);
+        }
+
+// Score is 0
+        if (cloudsScore==0)
+        {
+            if (starsScore==0)
+            {
+                if (bubblesScore==0)
+                {
+                    cloudStar.SetActive(false);
+                    bubbleCloud.SetActive(false);
+                    starBubble.SetActive(false);
+                    bubblesIcon.SetActive(false);
+                    starsIcon.SetActive(false);
+                    cloudsIcon.SetActive(false);
+                    topBar1.SetActive(false);
+                    topBar2.SetActive(false);
+                    topBar3.SetActive(false);
+                    topBar4.SetActive(false);
+                    topBar5.SetActive(false);
+                }
+            }
+        }
+
+// Clouds highest score
+        if(cloudsScore>starsScore)
+        {
+            if(cloudsScore>bubblesScore)
+            {
+                cloudsIcon.SetActive(true);
+                starsIcon.SetActive(false);
+                bubblesIcon.SetActive(false);
+                cloudStar.SetActive(false);
+                bubbleCloud.SetActive(false);
+                starBubble.SetActive(false);
+
+                if(cloudsScore==1)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(false);
+                    topBar3.SetActive(false);
+                    topBar4.SetActive(false);
+                    topBar5.SetActive(false);
+                    
+                }
+
+                if(cloudsScore==2)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(true);
+                    topBar3.SetActive(false);
+                    topBar4.SetActive(false);
+                    topBar5.SetActive(false);
+                }
+
+                if(cloudsScore==3)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(true);
+                    topBar3.SetActive(true);
+                    topBar4.SetActive(false);
+                    topBar5.SetActive(false);
+                }
+
+                if(cloudsScore==4)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(true);
+                    topBar3.SetActive(true);
+                    topBar4.SetActive(true);
+                    topBar5.SetActive(false);
+                }
+
+                if(cloudsScore==5)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(true);
+                    topBar3.SetActive(true);
+                    topBar4.SetActive(true);
+                    topBar5.SetActive(true);
+                }
+            }
+        }
+
+// Stars highest score
+        if(starsScore>cloudsScore)
+        {
+            if(starsScore>bubblesScore)
+            {
+                starsIcon.SetActive(true);
+                cloudsIcon.SetActive(false);
+                bubblesIcon.SetActive(false);
+                cloudStar.SetActive(false);
+                bubbleCloud.SetActive(false);
+                starBubble.SetActive(false);
+
+                if(starsScore==1)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(false);
+                    topBar3.SetActive(false);
+                    topBar4.SetActive(false);
+                    topBar5.SetActive(false);
+                    
+                }
+
+                if(starsScore==2)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(true);
+                    topBar3.SetActive(false);
+                    topBar4.SetActive(false);
+                    topBar5.SetActive(false);
+                }
+
+                if(starsScore==3)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(true);
+                    topBar3.SetActive(true);
+                    topBar4.SetActive(false);
+                    topBar5.SetActive(false);
+                }
+
+                if(starsScore==4)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(true);
+                    topBar3.SetActive(true);
+                    topBar4.SetActive(true);
+                    topBar5.SetActive(false);
+                }
+
+                if(starsScore==5)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(true);
+                    topBar3.SetActive(true);
+                    topBar4.SetActive(true);
+                    topBar5.SetActive(true);
+                }
+            }
+        }
+
+// Bubbles highest score
+        if(bubblesScore>cloudsScore)
+        {
+            if(bubblesScore>starsScore)
+            {
+                bubblesIcon.SetActive(true);
+                starsIcon.SetActive(false);
+                cloudsIcon.SetActive(false);
+                cloudStar.SetActive(false);
+                bubbleCloud.SetActive(false);
+                starBubble.SetActive(false);
+
+                if(bubblesScore==1)
+                {
+                    topBar1.SetActive(true);
+                    topBar3.SetActive(false);
+                    topBar4.SetActive(false);
+                    topBar5.SetActive(false);
+                    
+                }
+
+                if(bubblesScore==2)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(true);
+                    topBar3.SetActive(false);
+                    topBar4.SetActive(false);
+                    topBar5.SetActive(false);
+                }
+
+                if(bubblesScore==3)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(true);
+                    topBar3.SetActive(true);
+                    topBar4.SetActive(false);
+                    topBar5.SetActive(false);
+                }
+
+                if(bubblesScore==4)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(true);
+                    topBar3.SetActive(true);
+                    topBar4.SetActive(true);
+                    topBar5.SetActive(false);
+                }
+
+                if(bubblesScore==5)
+                {
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(true);
+                    topBar3.SetActive(true);
+                    topBar4.SetActive(true);
+                    topBar5.SetActive(true);
+                }
+            }
+        }
+
+// Clouds = Stars
+        if(cloudsScore==starsScore)
+        {
+            if(cloudsScore>bubblesScore)
+            {
+            if(cloudsScore>=1)
+            {
+                cloudStar.SetActive(true);
+                bubbleCloud.SetActive(false);
+                starBubble.SetActive(false);
+                bubblesIcon.SetActive(false);
+                starsIcon.SetActive(false);
+                cloudsIcon.SetActive(false);
+            }
+
+            if(cloudsScore==1)
+            {
+                topBar1.SetActive(true);
+                topBar2.SetActive(false);
+                topBar3.SetActive(false);
+                topBar4.SetActive(false);
+                topBar5.SetActive(false);
+                    
+            }
+
+            if(cloudsScore==2)
+            {
+                topBar1.SetActive(true);
+                topBar2.SetActive(true);
+                topBar3.SetActive(false);
+                topBar4.SetActive(false);
+                topBar5.SetActive(false);
+            }
+            }
+        }
+
+        // Stars = Bubbles
+        if(starsScore==bubblesScore)
+        {
+            if(starsScore>cloudsScore)
+            {
+            if(starsScore>=1)
+            {
+                starBubble.SetActive(true);
+                bubbleCloud.SetActive(false);
+                cloudStar.SetActive(false);
+                bubblesIcon.SetActive(false);
+                starsIcon.SetActive(false);
+                cloudsIcon.SetActive(false);
+            }
+
+            if(starsScore==1)
+            {
+                topBar1.SetActive(true);
+                topBar2.SetActive(false);
+                topBar3.SetActive(false);
+                topBar4.SetActive(false);
+                topBar5.SetActive(false);
+                    
+            }
+
+            if(starsScore==2)
+            {
+                topBar1.SetActive(true);
+                topBar2.SetActive(true);
+                topBar3.SetActive(false);
+                topBar4.SetActive(false);
+                topBar5.SetActive(false);
+            }
+            }
+        }
+
+        // Bubbles = Clouds
+        if(bubblesScore==cloudsScore)
+        {
+            if(bubblesScore>starsScore)
+            {
+            if(bubblesScore>=1)
+            {
+                bubbleCloud.SetActive(true);
+                cloudStar.SetActive(false);
+                starBubble.SetActive(false);
+                bubblesIcon.SetActive(false);
+                starsIcon.SetActive(false);
+                cloudsIcon.SetActive(false);
+            }
+
+            if(bubblesScore==1)
+            {
+                topBar1.SetActive(true);
+                topBar2.SetActive(false);
+                topBar3.SetActive(false);
+                topBar4.SetActive(false);
+                topBar5.SetActive(false);
+                    
+            }
+
+            if(bubblesScore==2)
+            {
+                topBar1.SetActive(true);
+                topBar2.SetActive(true);
+                topBar3.SetActive(false);
+                topBar4.SetActive(false);
+                topBar5.SetActive(false);
+            }
+            }
         }
     }
 
