@@ -51,6 +51,7 @@ public class Player_Score : MonoBehaviour
     public GameObject starBubble;
     public GameObject bubbleCloud;
     public GameObject cloudStar;
+    public GameObject cloudStarBubble;
 
     public GameObject timerCircle;
     public GameObject timerCircle2;
@@ -58,7 +59,7 @@ public class Player_Score : MonoBehaviour
 
     void Start()
     {
-        spawner.SetActive(true);
+        spawner.SetActive(false);
         
         cloudsScore = 0;
         hair1Score = 0;
@@ -81,7 +82,9 @@ public class Player_Score : MonoBehaviour
         shoes3Score = 0;
         accessory3Score = 0;
 
-        timerCount = 100;
+        timerText = GameObject.Find("TimerText").GetComponent<Text>();
+        timerText.text = "";
+
         timerCircle.SetActive(true);
         timerCircle2.SetActive(false);
 
@@ -99,10 +102,7 @@ public class Player_Score : MonoBehaviour
         cloudStar.SetActive(false);
         bubbleCloud.SetActive(false);
 
-        timerText = GameObject.Find("TimerText").GetComponent<Text>();
-        timerText.text = timerCount + " seconds";
-
-        StartCoroutine(TimerCountdown());
+        cloudStarBubble.SetActive(false);
     }
 
     void Update()
@@ -113,13 +113,21 @@ public class Player_Score : MonoBehaviour
 
         bubblesScore = hair3Score + top3Score + bottom3Score + shoes3Score + accessory3Score;
 
-        timerText.text = timerCount + "";
-        
-        if(timerCount <= 0)
+        if(timerCount <= 100)
         {
-            spawner.SetActive(false);
-            timerText.text = "0";
-            Application.Quit();
+            timerText.text = timerCount + "";
+
+            if(timerCount <= 0)
+            {
+                spawner.SetActive(false);
+                timerText.text = "";
+                Application.Quit();
+            }
+        }
+        
+        if(timerCount >=101)
+        {
+            timerText.text = "";
         }
 
         if(timerCount <= 30)
@@ -146,6 +154,7 @@ public class Player_Score : MonoBehaviour
                     topBar3.SetActive(false);
                     topBar4.SetActive(false);
                     topBar5.SetActive(false);
+                    cloudStarBubble.SetActive(false);
                 }
             }
         }
@@ -161,6 +170,7 @@ public class Player_Score : MonoBehaviour
                 cloudStar.SetActive(false);
                 bubbleCloud.SetActive(false);
                 starBubble.SetActive(false);
+                cloudStarBubble.SetActive(false);
 
                 if(cloudsScore==1)
                 {
@@ -221,6 +231,7 @@ public class Player_Score : MonoBehaviour
                 cloudStar.SetActive(false);
                 bubbleCloud.SetActive(false);
                 starBubble.SetActive(false);
+                cloudStarBubble.SetActive(false);
 
                 if(starsScore==1)
                 {
@@ -281,6 +292,7 @@ public class Player_Score : MonoBehaviour
                 cloudStar.SetActive(false);
                 bubbleCloud.SetActive(false);
                 starBubble.SetActive(false);
+                cloudStarBubble.SetActive(false);
 
                 if(bubblesScore==1)
                 {
@@ -342,6 +354,7 @@ public class Player_Score : MonoBehaviour
                 bubblesIcon.SetActive(false);
                 starsIcon.SetActive(false);
                 cloudsIcon.SetActive(false);
+                cloudStarBubble.SetActive(false);
             }
 
             if(cloudsScore==1)
@@ -378,6 +391,7 @@ public class Player_Score : MonoBehaviour
                 bubblesIcon.SetActive(false);
                 starsIcon.SetActive(false);
                 cloudsIcon.SetActive(false);
+                cloudStarBubble.SetActive(false);
             }
 
             if(starsScore==1)
@@ -414,6 +428,7 @@ public class Player_Score : MonoBehaviour
                 bubblesIcon.SetActive(false);
                 starsIcon.SetActive(false);
                 cloudsIcon.SetActive(false);
+                cloudStarBubble.SetActive(false);
             }
 
             if(bubblesScore==1)
@@ -435,6 +450,31 @@ public class Player_Score : MonoBehaviour
                 topBar5.SetActive(false);
             }
             }
+        }
+
+        // Clouds = Stars = Bubbles
+        if(cloudsScore==starsScore)
+        {
+            if (starsScore==bubblesScore)
+            {
+                if(bubblesScore==1)
+                {
+                    bubbleCloud.SetActive(false);
+                    cloudStar.SetActive(false);
+                    starBubble.SetActive(false);
+                    bubblesIcon.SetActive(false);
+                    starsIcon.SetActive(false);
+                    cloudsIcon.SetActive(false);
+                    cloudStarBubble.SetActive(true);
+
+                    topBar1.SetActive(true);
+                    topBar2.SetActive(false);
+                    topBar3.SetActive(false);
+                    topBar4.SetActive(false);
+                    topBar5.SetActive(false);
+                }
+            }
+            
         }
     }
 
@@ -562,19 +602,5 @@ public class Player_Score : MonoBehaviour
                 accessory1Score = 0;
                 accessory2Score = 0;
             }
-    }
-
-// Timer
-    IEnumerator TimerCountdown()
-    {
-        print(Time.time);
-        yield return new WaitForSeconds(1);
-        timerCount = timerCount - 1;
-        Wait();
-    }
-
-    public void Wait()
-    {
-        StartCoroutine (TimerCountdown());
     }
 }

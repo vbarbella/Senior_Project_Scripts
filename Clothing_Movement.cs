@@ -10,9 +10,15 @@ public class Clothing_Movement : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(StartGame());
+        StartCoroutine(StartCountdown());
     }
 
+    IEnumerator StartCountdown()
+    {
+        print(Time.time);
+        yield return new WaitForSeconds(2);
+        StartCoroutine(StartGame());
+    }
     IEnumerator StartGame()
     {
         print(Time.time);
