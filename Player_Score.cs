@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player_Score : MonoBehaviour
 {
@@ -121,7 +122,31 @@ public class Player_Score : MonoBehaviour
             {
                 spawner.SetActive(false);
                 timerText.text = "";
-                Application.Quit();
+                if (cloudsScore>=5)
+                {
+                    SceneManager.LoadScene(2);
+                }
+
+                if (starsScore>=5)
+                {
+                    SceneManager.LoadScene(3);
+                }
+
+                if (bubblesScore>=5)
+                {
+                    SceneManager.LoadScene(4);
+                }
+
+                if (cloudsScore<5)
+                {
+                    if (starsScore<5)
+                    {
+                        if (bubblesScore<5)
+                        {
+                            SceneManager.LoadScene(5);
+                        }   
+                    }
+                }
             }
         }
         

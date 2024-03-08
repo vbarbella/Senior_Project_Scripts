@@ -29,7 +29,7 @@ public class Start_Level : MonoBehaviour
 
         Player_Score.timerCount = 101;
 
-        //Player_Movement.playerSpeed = 0;
+        Player_Movement.playerSpeed = 0;
     }
 
     // Update is called once per frame
@@ -42,8 +42,6 @@ public class Start_Level : MonoBehaviour
     {
         textBox.SetActive(false);
         spawn.SetActive(true);
-
-        Player_Movement.playerSpeed = 8;
 
         StartCoroutine(Count1());
     }
@@ -85,6 +83,7 @@ public class Start_Level : MonoBehaviour
         timerText.SetActive(true);
         StartCoroutine(TimerCountdown());
         Player_Score.timerCount = 100;
+        Player_Movement.playerSpeed = 8;
 
         sky1.SetActive(true);
         sky2.SetActive(false);
