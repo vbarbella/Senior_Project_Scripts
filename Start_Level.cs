@@ -17,12 +17,18 @@ public class Start_Level : MonoBehaviour
     public GameObject sky1;
     public GameObject sky2;
 
+    public GameObject grid1;
+    public GameObject grid2;
+
+    public GameObject spotlights;
+
     // Start is called before the first frame update
     void Start()
     {
         timer.SetActive(false);
         spawn.SetActive(false);
         sky1.SetActive(false);
+        spotlights.SetActive(false);
 
         textBox.SetActive(true);
         sky2.SetActive(true);
@@ -87,6 +93,11 @@ public class Start_Level : MonoBehaviour
 
         sky1.SetActive(true);
         sky2.SetActive(false);
+
+        grid1.SetActive(false);
+        grid2.SetActive(true);
+
+        spotlights.SetActive(true);
     }
 
     // Timer

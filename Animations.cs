@@ -4,9 +4,43 @@ using UnityEngine;
 
 public class Animations : MonoBehaviour
 {
+
+    public GameObject cloudsEffect;
+    public GameObject starsEffect;
+    public GameObject bubblesEffect;
+
     void Start()
     {
         GetComponent<Animator>().SetBool("Collected", false);
+    }
+
+    void Update()
+    {
+        if (Player_Score.cloudsScore < 5)
+        {
+            cloudsEffect.SetActive(false);
+        }
+        if (Player_Score.starsScore < 5)
+        {
+            starsEffect.SetActive(false);
+        }
+        if (Player_Score.bubblesScore < 5)
+        {
+            bubblesEffect.SetActive(false);
+        }
+
+        if (Player_Score.cloudsScore >= 5)
+        { 
+            cloudsEffect.SetActive(true);
+        }
+        if (Player_Score.starsScore >= 5)
+        { 
+            starsEffect.SetActive(true);
+        }
+        if (Player_Score.bubblesScore >= 5)
+        { 
+            bubblesEffect.SetActive(true);
+        }
     }
 
 
@@ -14,6 +48,8 @@ public class Animations : MonoBehaviour
     {
         if (Player_Score.cloudsScore == 5)
        { 
+            //cloudsEffect.SetActive(true);
+
             if (collision.tag == "Hair1")
             {
                 Wink();
@@ -42,6 +78,8 @@ public class Animations : MonoBehaviour
 
         if (Player_Score.starsScore == 5)
         {
+            //starsEffect.SetActive(true);
+
             if (collision.tag == "Hair2")
             {
                 Wink();
@@ -70,6 +108,8 @@ public class Animations : MonoBehaviour
 
         if (Player_Score.bubblesScore == 5)
         {
+            //bubblesEffect.SetActive(true);
+
             if (collision.tag == "Hair3")
             {
                 Wink();
