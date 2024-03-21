@@ -12,7 +12,6 @@ public class Clouds_Movement : MonoBehaviour
     private Vector3 pointCPosition;
     private Vector3 pointDPosition;
 
-    // Use this for initialization
     void Start()
     {
         pointCPosition = new Vector3(pointC.position.x, 0, 0);
@@ -20,7 +19,6 @@ public class Clouds_Movement : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 thisPosition = new Vector3(0, transform.position.y, 0);

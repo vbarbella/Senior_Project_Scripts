@@ -6,7 +6,7 @@ public class Boosts : MonoBehaviour
 {
     public GameObject speedUp;
     public GameObject slowDown;
-    public bool isBoosted;
+    public static bool isBoosted;
 
 // Clouds
     public GameObject hair1;
@@ -32,6 +32,13 @@ public class Boosts : MonoBehaviour
     public GameObject baseHairFront;
     public GameObject baseHairBack;
 
+    AudioSource audioSource;
+    public AudioClip SpeedUp;
+    public AudioClip SlowDown;
+    public AudioClip OutfitReset;
+    public AudioClip TimeLoss;
+    public AudioClip NoBoost;
+
 
     void Start()
     {
@@ -52,6 +59,8 @@ public class Boosts : MonoBehaviour
             if (isBoosted == false)
             {
                 StartSpeedUp();
+                audioSource = GetComponent<AudioSource>();
+                audioSource.PlayOneShot(SpeedUp); 
             }
         }
 // Slow Down
@@ -60,6 +69,8 @@ public class Boosts : MonoBehaviour
             if (isBoosted == false)
             {
                 StartSlowDown();
+                audioSource = GetComponent<AudioSource>();
+                audioSource.PlayOneShot(SlowDown);
             }
         }
 // Outfit Reset
@@ -110,6 +121,9 @@ public class Boosts : MonoBehaviour
                 Player_Score.bottom3Score = 0;
                 Player_Score.shoes3Score = 0;
                 Player_Score.accessory3Score = 0;
+
+                audioSource = GetComponent<AudioSource>();
+                audioSource.PlayOneShot(OutfitReset);
             }
         }
 // Lose Time
@@ -118,6 +132,8 @@ public class Boosts : MonoBehaviour
             if (isBoosted == false)
             {
                 LoseTime();
+                audioSource = GetComponent<AudioSource>();
+                audioSource.PlayOneShot(TimeLoss);
             }
         }
     }
@@ -163,5 +179,8 @@ public class Boosts : MonoBehaviour
         isBoosted = false;
         speedUp.SetActive(false);
         slowDown.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(NoBoost);
     }
 }

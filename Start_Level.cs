@@ -9,6 +9,7 @@ public class Start_Level : MonoBehaviour
     public GameObject timerText;
     public GameObject spawn;
     public GameObject textBox;
+    public GameObject textBox2;
 
     public GameObject num1;
     public GameObject num2;
@@ -22,7 +23,9 @@ public class Start_Level : MonoBehaviour
 
     public GameObject spotlights;
 
-    // Start is called before the first frame update
+    public GameObject levelMusic1;
+    public GameObject levelMusic2;
+
     void Start()
     {
         timer.SetActive(false);
@@ -38,18 +41,20 @@ public class Start_Level : MonoBehaviour
         Player_Movement.playerSpeed = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void StartLevel()
     {
         textBox.SetActive(false);
         spawn.SetActive(true);
 
         StartCoroutine(Count1());
+    }
+    public void CloseTextBox()
+    {
+        textBox2.SetActive(false);
+    }
+    public void OpenTextBox()
+    {
+        textBox2.SetActive(true);
     }
 
     IEnumerator Count1()
@@ -98,6 +103,9 @@ public class Start_Level : MonoBehaviour
         grid2.SetActive(true);
 
         spotlights.SetActive(true);
+
+        levelMusic1.SetActive(true);
+        levelMusic2.SetActive(false);
     }
 
     // Timer

@@ -28,6 +28,9 @@ public class Show_Clothing : MonoBehaviour
     public GameObject shoes3;
     public GameObject accessory3;
 
+    AudioSource audioSource;
+    public AudioClip Cloth;
+
     void Start()
     {
         hair1.SetActive(false);
@@ -60,6 +63,9 @@ public class Show_Clothing : MonoBehaviour
             baseHairBack.SetActive(false);
             hair2.SetActive(false);
             hair3.SetActive(false);
+
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth); 
         }
         
         if (collision.tag == "Top1")
@@ -67,7 +73,10 @@ public class Show_Clothing : MonoBehaviour
             top1.SetActive(true);            
 
             top2.SetActive(false);
-            top3.SetActive(false);            
+            top3.SetActive(false);    
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth);         
         }
 
         if (collision.tag == "Bottom1")
@@ -75,7 +84,10 @@ public class Show_Clothing : MonoBehaviour
             bottom1.SetActive(true);            
 
             bottom2.SetActive(false);
-            bottom3.SetActive(false);            
+            bottom3.SetActive(false);      
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth);       
         }
 
         if (collision.tag == "Shoes1")
@@ -84,6 +96,9 @@ public class Show_Clothing : MonoBehaviour
 
             shoes2.SetActive(false);
             shoes3.SetActive(false);            
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth); 
         }
 
         if (collision.tag == "Accessory1")
@@ -92,6 +107,9 @@ public class Show_Clothing : MonoBehaviour
             
             accessory2.SetActive(false);
             accessory3.SetActive(false);            
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth); 
         }
 
         // Stars
@@ -102,7 +120,10 @@ public class Show_Clothing : MonoBehaviour
             baseHairFront.SetActive(false);
             baseHairBack.SetActive(false);
             hair1.SetActive(false);
-            hair3.SetActive(false);            
+            hair3.SetActive(false);    
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth);         
         }
         
         if (collision.tag == "Top2")
@@ -110,7 +131,10 @@ public class Show_Clothing : MonoBehaviour
             top2.SetActive(true);
             
             top1.SetActive(false);
-            top3.SetActive(false);            
+            top3.SetActive(false);    
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth);         
         }
 
         if (collision.tag == "Bottom2")
@@ -118,7 +142,10 @@ public class Show_Clothing : MonoBehaviour
             bottom2.SetActive(true);            
 
             bottom1.SetActive(false);
-            bottom3.SetActive(false);            
+            bottom3.SetActive(false);      
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth);       
         }
 
         if (collision.tag == "Shoes2")
@@ -126,7 +153,10 @@ public class Show_Clothing : MonoBehaviour
             shoes2.SetActive(true);            
 
             shoes1.SetActive(false);
-            shoes3.SetActive(false);            
+            shoes3.SetActive(false);     
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth);        
         }
 
         if (collision.tag == "Accessory2")
@@ -134,7 +164,10 @@ public class Show_Clothing : MonoBehaviour
             accessory2.SetActive(true);            
 
             accessory1.SetActive(false);
-            accessory3.SetActive(false);            
+            accessory3.SetActive(false);      
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth);       
         }
 
         // Bubbles
@@ -145,7 +178,10 @@ public class Show_Clothing : MonoBehaviour
             baseHairFront.SetActive(false);
             baseHairBack.SetActive(false);
             hair1.SetActive(false);
-            hair2.SetActive(false);            
+            hair2.SetActive(false);       
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth);      
         }
         
         if (collision.tag == "Top3")
@@ -153,7 +189,10 @@ public class Show_Clothing : MonoBehaviour
             top3.SetActive(true);            
 
             top1.SetActive(false);
-            top2.SetActive(false);            
+            top2.SetActive(false);     
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth);        
         }
 
         if (collision.tag == "Bottom3")
@@ -161,7 +200,10 @@ public class Show_Clothing : MonoBehaviour
             bottom3.SetActive(true);            
 
             bottom1.SetActive(false);
-            bottom2.SetActive(false);            
+            bottom2.SetActive(false);      
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth);       
         }
 
         if (collision.tag == "Shoes3")
@@ -169,7 +211,10 @@ public class Show_Clothing : MonoBehaviour
             shoes3.SetActive(true);            
 
             shoes1.SetActive(false);
-            shoes2.SetActive(false);            
+            shoes2.SetActive(false);      
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth);       
         }
 
         if (collision.tag == "Accessory3")
@@ -177,7 +222,10 @@ public class Show_Clothing : MonoBehaviour
             accessory3.SetActive(true);            
 
             accessory1.SetActive(false);
-            accessory2.SetActive(false);            
+            accessory2.SetActive(false);   
+            
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Cloth);          
         }
     }
 }

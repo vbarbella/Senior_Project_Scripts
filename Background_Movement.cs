@@ -12,7 +12,6 @@ public class Background_Movement : MonoBehaviour
     private Vector3 pointAPosition;
     private Vector3 pointBPosition;
 
-    // Use this for initialization
     void Start()
     {
         pointAPosition = new Vector3(0, pointA.position.y, 0);
@@ -20,7 +19,6 @@ public class Background_Movement : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 thisPosition = new Vector3(0, transform.position.y, 0);
