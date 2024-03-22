@@ -9,6 +9,9 @@ public class Animations : MonoBehaviour
     public GameObject starsEffect;
     public GameObject bubblesEffect;
 
+    AudioSource audioSource;
+    public AudioClip Winking;
+
     void Start()
     {
         GetComponent<Animator>().SetBool("Collected", false);
@@ -141,6 +144,9 @@ public class Animations : MonoBehaviour
     {
         GetComponent<Animator>().SetBool("Collected", true);
         StartCoroutine (WinkTime());
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(Winking);
     }
 
     IEnumerator WinkTime()

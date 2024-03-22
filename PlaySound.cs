@@ -12,6 +12,4 @@ public class PlaySound : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(Click); 
     }
-	
-
 }
