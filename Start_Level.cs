@@ -26,6 +26,8 @@ public class Start_Level : MonoBehaviour
     public GameObject levelMusic1;
     public GameObject levelMusic2;
 
+    public GameObject musicPS;
+
     void Start()
     {
         timer.SetActive(false);
@@ -106,6 +108,8 @@ public class Start_Level : MonoBehaviour
 
         levelMusic1.SetActive(true);
         levelMusic2.SetActive(false);
+
+        musicPS.SetActive(true);
     }
 
     // Timer
