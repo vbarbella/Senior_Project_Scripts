@@ -57,6 +57,10 @@ public class Player_Score : MonoBehaviour
     public GameObject timerCircle;
     public GameObject timerCircle2;
 
+    public GameObject timer;
+
+    public GameObject styleIcons;
+
 
     void Start()
     {
@@ -121,6 +125,8 @@ public class Player_Score : MonoBehaviour
             if(timerCount <= 0)
             {
                 spawner.SetActive(false);
+                timer.SetActive(false);
+                styleIcons.SetActive(false);
                 timerText.text = "";
                 if (cloudsScore>=5)
                 {
